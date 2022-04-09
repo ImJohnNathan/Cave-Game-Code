@@ -1,0 +1,30 @@
+--Sets up the number of ore and directories
+local numOfOre = 3
+local baseOre =
+local listOfPos = {
+    {}
+}
+
+
+--Spawns a new ore when called
+function spawnOre()
+	local x = math.random(-214, -181)
+	local y = math.random(14, 16)
+	local z = math.random(13, 70)
+		local newOre = baseOre:Clone()
+			warn("Current random coordinates are " .. x, y, z)
+			warn("Step 1 Passed")
+		newOre.Parent = game.Workspace.Cave["1st Area"].Ore.Ore.Union
+			warn("Step 2 Passed")
+		newOre.Position = Vector3.new(x, y, z)
+			warn("Step 3 Passed")
+		print("Successfully created new Ore (game.Workspace.Cave.Script)")
+			warn("Step 4 Passed")
+		wait(0.1)
+end
+
+
+--Repeats function for how many you set numOfOre to
+for i = 1, numOfOre do
+	spawnOre()
+end
