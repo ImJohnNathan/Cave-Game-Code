@@ -1,0 +1,32 @@
+--Settings up Variables and Services
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local LastAddedPlayer = ""
+local BackpackStorage = ReplicatedStorage.Backpacks
+
+--When a player connects it runs the script
+game.Players.PlayerAdded:Connect(function(player)
+	LastAddedPlayer = player.Name
+	if game.Players:WaitForChild(LastAddedPlayer) then
+		local CurrentPlayer = game.Players:WaitForChild(LastAddedPlayer) --Finds a player with the parameter and prints the name and stat
+		print("BackpackHandler: " .. CurrentPlayer.Name)
+		local BackpackProg = CurrentPlayer:WaitForChild("PlrStats").BackpackProg.Value
+		print("BackpackHandler: " .. BackpackProg)
+    
+		if BackpackProg == 1 then
+			local AddedBackpack = BackpackStorage.StarterBackpack:Clone()
+			AddedBackpack.Parent = game.Workspace
+			AddedBackpack.Parent = game.Workspace:WaitForChild(LastAddedPlayer)
+			print("BackpackHandler: Successfully gave item")
+      
+		elseif BackpackProg == 2 then
+			local AddedBackpack = BackpackStorage.StorageBackpack:Clone()
+			AddedBackpack.Parent = game.Workspace
+			AddedBackpack.Parent = game.Workspace:WaitForChild(LastAddedPlayer)
+      
+		elseif BackpackProg == 3 then
+			local AddedBackpack = BackpackStorage.MugBloodedBackpack:Clone()
+			AddedBackpack.Parent = game.Workspace
+			AddedBackpack.Parent = game.Workspace:WaitForChild(LastAddedPlayer)
+		end
+	end
+end)
