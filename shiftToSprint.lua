@@ -12,10 +12,11 @@ UIS.InputBegan:Connect(function(Key, gameProcessed)
 				while workspace.Camera.FieldOfView < 100 do
 					workspace.Camera.FieldOfView = workspace.Camera.FieldOfView + 5
 					wait(0.05)
+					if keyPressed == false then
+						break
+					end
 				end
 			end
-		else
-			print('hey')
 		end
 	end
 end)
@@ -29,9 +30,10 @@ UIS.InputEnded:Connect(function(Key, gameProcessed)
 				while workspace.Camera.FieldOfView > 70 do
 					workspace.Camera.FieldOfView = workspace.Camera.FieldOfView - 2
 					wait(0.04)
+					if keyPressed == true then
+						break
+					end
 				end
-			else
-				print("hey")
 			end
 		end
 	end
